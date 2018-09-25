@@ -4,7 +4,7 @@ This is a repository of my coursera Machine Learning by Standford, Andrew NG cou
 
 This is all written in Octave. The datasets are also uploaded with the excercises
 
-Includes:
+### Includes:
 * Linear Regression (one variable and multiple variables)
 * Logistic Regression
 * Regularization
