@@ -20,8 +20,9 @@ For more information, please visit: https://www.coursera.org/learn/machine-learn
 ### Notes
 
 
-##### Ex5
-**关于联系中J<sub>train</sub>和J<sub>cv</sub>的思考**
+#### Ex5
+**关于联系中J<sub>train</sub>和J<sub>cv</sub>的思考**</br>
+
 在计算J<sub>train</sub>的时候，所用的参数theta是在不同样本数量下得到的，而J<sub>train</sub>也是在该样本数量下对应的theta计算得到的。而对于J<sub>cv</sub>其不同的是，其计算样本是固定的，只是参数变化了.
 可以参见下面的代码，就是在做这样的事情，error_train得到的J<sub>train</sub>,而J<sub>cv</sub>是放在了error_val中.
 
