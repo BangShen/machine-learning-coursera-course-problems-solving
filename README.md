@@ -21,10 +21,13 @@ For more information, please visit: https://www.coursera.org/learn/machine-learn
 
 
 #### Ex4
-**关于在submit的时候结果和run不一样**</br>
-这个是由于我在run的时候的代码是写死了的，但是在submit的时候的变量改变了。
+* **关于在submit的时候结果和run不一样**:这个是由于我在run的时候的代码是写死了的，但是在submit的时候的变量改变了。
 
-* 计算正则后的J的时候，需要注意的是要去掉x0所对应的参数值，这些参数是不需要进行正则化的。这在[文章](https://stats.stackexchange.com/questions/86991/reason-for-not-shrinking-the-bias-intercept-term-in-regression)中有介绍的，对LR和neural working来说，**改变theta0就是在上下移动模拟曲线的位置，这解决不了过拟合的问题，也就是违背了正则化的目的，所以是不需要的**。但是在其他的一些模型中，是否正则偏差项好像影响不大。
+* 计算正则后的J的时候，需要注意的是要去掉x0所对应的参数值，这些参数是不需要进行正则化的。这在[文章](https://stats.stackexchange.com/questions/86991/reason-for-not-shrinking-the-bias-intercept-term-in-regression)中有介绍的，对LR和neural working来说，**改变theta0就是在上下移动模拟曲线的位置，这解决不了过拟合的问题，也就是违背了正则化的目的，所以是不需要的**
+。但是在其他的一些模型中，是否正则偏差项好像影响不大。
+
+* 为了避免初始化参数容易导致的对称性问题，需要随机初始化的参数值，其方法就是$$\Theta = rand(10,11) * 2 * \epsilon - \epsilon $$， 但是问题是如何确定\epsilon呢，在Andrew的课程练习中提到用的方法是\epsilon<sub>init</sub> = \cfrac{\sqrt{6}}{\sqrt{L<sub>in</sub> + L<sub>out</sub>}},也不知为啥
+
 
 
 #### Ex5
