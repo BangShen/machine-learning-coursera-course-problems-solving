@@ -1,4 +1,5 @@
 
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 ## Coursera-Machine-Learning-Andrew-NG
 This is a repository of my coursera Machine Learning by Standford, Andrew NG course's assignments' solutions
 
