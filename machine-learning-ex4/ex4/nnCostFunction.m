@@ -61,60 +61,48 @@ Theta2_grad = zeros(size(Theta2));
 %               the regularization separately and then add them to Theta1_grad
 %               and Theta2_grad from Part 2.
 %
-
-
-% part1
-
-size(nn_params)
-Xplus = [ones(size(X,1),1) X];  %把1加上到X矩阵中  5000*401
-%Theta1 = reshape(nn_params(1:10025),25,401);  %25*401
-%Theta2 = reshape(nn_params(10026:end),10,26); % 10*26
-
-layer2 = Theta1*transpose(Xplus);  % 25*5000
-
-layer_2 = sigmoid(layer2);  % 25*5000 
-
-layer3 = Theta2*[ones(1,size(layer_2,2));layer_2];  % layer_2变成 26*5000
-layer_3 = sigmoid(layer3); %实际上这个就是10*5000的结果了，转置下就可以得到5000*10 的表示这5000个点的分类了。而这些输出值都是在0-1
-
-res = transpose(layer_3);  %这个结果就是5000*10的结果，也就是神经网络计算出来的结果
-
-res(1,:);
-
-%%%% 修改y的形式，y本来是5000*1这种格式的，但是现在要改变成5000*10的这种类型，因为要分为10类。
-
-y0 = zeros(5000,10);
-for i=1:5000
-	j = y(i);
-	y0(i,j) = 1;
-
+X = [ones(m, 1) X];
+z1 = X * Theta1';
+a1 = sigmoid(z1);
+a1 = [ones(m, 1) a1];
+z2 = a1 * Theta2';
+h = sigmoid(z2);
+%Z2 = Theta1*X';
+%Z2 = [ones(1,m);Z2];
+%Z3 = Theta2*sigmoid(Z2);
+%h = sigmoid(Z3);
+for k=1:num_labels
+yk = y==k;
+J = J - (1/m)*sum(((yk.*log(h(:,k))) + (((1-yk).* log(1-h(:,k))))));
 end
-% y0就是处理后的y值，是5000*10的结构
+rtheta1 = sum(sum(Theta1(:,2:end).^2));
+rtheta2 = sum(sum(Theta2(:,2:end).^2));
+bias = lambda/(2*m);
 
-%接下来就是按照J的计算方法分别对比res和y0两个结果进行cost function计算
-
-m = size(X, 1);
-
-J = ((-1)/m)*sum(sum(y0.*log(res)+(1-y0).*log(1-res))) + (lambda/(2*m))*sum(nn_params.^2);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+J = J + (bias * (rtheta1+rtheta2));
+Del1=0;
+Del2=0;
+for t=1:m
+   A1 = X(t,:)';
+   Z2 = Theta1*A1;
+   A2 = [1;sigmoid(Z2)];
+   Z3 = Theta2*A2;
+   H = sigmoid(Z3);
+%    for k=1:num_labels
+%       yk = y==k;
+%       del3(k) = h(t,k) - yk;
+%    end
+    actual = y(t,:);
+    yk = zeros(num_labels,1);
+    yk(actual) = 1;
+    del3 = H-yk;
+   del2 = (Theta2(:,2:end)'*del3) .* sigmoidGradient(Z2);
+%    del1 = Theta1'*del3 .* sigmoidGradient(Z1);
+   Del1 = Del1 + del2* A1';
+   Del2 = Del2 + del3* A2';
+end
+Theta1_grad = Del1/m + (lambda/m)*[zeros(hidden_layer_size,1) Theta1(:,2:end)];
+Theta2_grad = Del2/m + (lambda/m)*[zeros(num_labels,1) Theta2(:,2:end)];
 
 
 

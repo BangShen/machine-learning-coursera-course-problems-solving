@@ -37,6 +37,7 @@ For more information, please visit: https://www.coursera.org/learn/machine-learn
 * <font color="blue">你在这个过程中学到哪些？</font>
 	1. 是一步一步解决问题的方法就如backprogapation一样，乍一看总是觉觉得好难，但是通过课程中不断地分解步骤来解决问题，从而最终解决掉。
 	2. 先对每一个样本进行单独训练，所以我这里面对5000\*400的X加了个循环，这样问题简单一些 
+	3. 代码最后的部分并没有解决如何处理的，这一部分我是直接参考了别人的code.
 
 #### Ex5
 **关于练习中J<sub>train</sub>和J<sub>cv</sub>的思考**</br>
