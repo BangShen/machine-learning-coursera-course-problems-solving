@@ -56,5 +56,11 @@ for i = 1:m
 end
 ```
 
+
+#### Ex7
+pca 这一块也不是特别懂，codes多是参考自github中
+
+
+
 注意点:
 1. 在画学习曲线的时候的cost function不需要加正则项，这是由于我们在计算J<sub>train</sub>和J<sub>cv</sub>的时候需要的是真正的cost, 而不是正则后的，这个问题在[stack](https://stats.stackexchange.com/questions/222493/why-do-we-use-the-unregularized-cost-to-plot-a-learning-curve)上已经被讨论过
