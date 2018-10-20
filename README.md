@@ -61,6 +61,14 @@ end
 pca 这一块也不是特别懂，codes多是参考自github中
 
 
-
 注意点:
 1. 在画学习曲线的时候的cost function不需要加正则项，这是由于我们在计算J<sub>train</sub>和J<sub>cv</sub>的时候需要的是真正的cost, 而不是正则后的，这个问题在[stack](https://stats.stackexchange.com/questions/222493/why-do-we-use-the-unregularized-cost-to-plot-a-learning-curve)上已经被讨论过
+
+
+#### Ex8
+
+* 作业中关于collaborative filtering learning的相关内容比较难一些
+* 在cofiCostFunc中关于`theta_grad`和`x_grad`的计算实际上上是参考了[link](https://github.com/AvaisP/machine-learning-programming-assignments-coursera-andrew-ng/blob/master/machine-learning-ex8/ex8/cofiCostFunc.m)代码，但是自己写了很久都没转过来是怎么回事。其计算的公式可以见pdf说明中的2.2.2。
+
+
+
